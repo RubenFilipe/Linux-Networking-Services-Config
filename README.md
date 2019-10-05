@@ -3,10 +3,15 @@ Commands list to install and setup Linux Services
 
 
 Apache on RHEL 7 - 
-MySQL / MAriaDB -
-PowerDNS -
+MySQL / MariaDB -
+DNS -
 Squid - 
 LDAP - 
 IPSec - 
 SSH Server - 
-
+SMTP -
+iSCSI -
+NTP - 
+Samba - 
+NFS - 
+SELinux
