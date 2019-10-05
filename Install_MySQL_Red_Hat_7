@@ -1,0 +1,25 @@
+#Configure MySQL repo
+rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm
+
+
+#Disable all unneeded Repos
+sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/mysql-community.repo
+
+#Install Service
+yum --enablerepo=mysql57-community install mysql-community-server
+
+#Manage MySQL service on Red hat 7
+systemctl start mysqld.service
+
+systemctl restart mysqld.service
+
+systemctl enable mysqld.service
+
+#Find root Password
+grep "A temporary password" /var/log/mysqld.log
+
+
+#Post installation Setup
+mysql_secure_installation
+
+mysql -h localhost -u root -p
