@@ -1,0 +1,60 @@
+
+#Update repos
+sudo yum update
+
+#Install apache
+sudo yum install httpd
+
+#Start Apache
+sudo systemctl start httpd
+
+#Verify Apache Status
+sudo systemctl status httpd
+
+#Verify Hostname
+hostname -I
+
+
+####Manage Apache Service
+
+sudo systemctl stop httpd
+
+sudo systemctl start httpd
+
+sudo systemctl restart httpd
+
+sudo systemctl reload httpd
+
+sudo systemctl disable httpd
+
+sudo systemctl enable httpd
+
+####VirtualHosts
+
+sudo mkdir -p /var/www/example.com/html
+
+sudo mkdir -p /var/www/example.com/log
+
+sudo chown -R $USER:$USER /var/www/example.com/html
+
+sudo chmod -R 755 /var/www
+
+sudo vi /var/www/example.com/html/index.html
+
+sudo mkdir /etc/httpd/sites-available /etc/httpd/sites-enabled
+
+sudo vi /etc/httpd/conf/httpd.conf
+
+IncludeOptional sites-enabled/*.conf
+
+sudo vi /etc/httpd/sites-available/example.com.conf
+
+  <VirtualHost *:80>
+    ServerName www.example.com
+    ServerAlias example.com
+    DocumentRoot /var/www/example.com/html
+    ErrorLog /var/www/example.com/log/error.log
+    CustomLog /var/www/example.com/log/requests.log combined
+  </VirtualHost>
+    
+sudo ln -s /etc/httpd/sites-available/example.com.conf /etc/httpd/sites-enabled/example.com.conf
