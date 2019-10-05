@@ -1,0 +1,24 @@
+yum update
+
+yum install squid
+
+systemctl start squid
+systemctl stop squid
+systemctl status squid
+systemctl enable squid
+systemctl restart squid
+
+ps -eZ | grep squid
+
+squidclient -p squid-port mgr:info
+
+firewall-cmd --add-port=3128/tcp --permanent
+
+
+mv /etc/squid/squid.conf /etc/squid/squid.conf.org
+
+vi /etc/squid/squid.conf
+
+#Reload Service
+service squid reload
+
