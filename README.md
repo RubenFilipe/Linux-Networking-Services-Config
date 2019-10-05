@@ -2,7 +2,7 @@
 Commands list to install and setup Linux Services
 
 
-Apache on RHEL 7
+Apache on RHEL 7 - 
 MySQL / MAriaDB
 PowerDNS
 Squid
